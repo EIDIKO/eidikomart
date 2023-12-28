@@ -105,6 +105,12 @@ module.exports = {
 
 pnpm run test:coverage eidiko-monorepo-plans
 
+#STEP-11.2: code lint
+
+pnpm install --save-dev eslint
+
+
+pnpm run test:coverage eidiko-monorepo-plans
 
 
 #STEP-12: Create an NX workspace
