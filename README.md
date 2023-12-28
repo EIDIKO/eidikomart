@@ -112,6 +112,12 @@ pnpm install --save-dev eslint
 
 pnpm run test:coverage eidiko-monorepo-plans
 
+#STEP-11.3: ESLINT for Type script
+
+
+npm install --save-dev eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
+
+
 
 #STEP-12: Create an NX workspace
 
