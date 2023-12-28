@@ -1,0 +1,72 @@
+{
+  "name": "eidiko-monorepo",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/eidiko-monorepo/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/eidiko-monorepo",
+        "format": ["cjs"],
+        "bundle": false,
+        "main": "apps/eidiko-monorepo/src/main.ts",
+        "tsConfig": "apps/eidiko-monorepo/tsconfig.app.json",
+        "assets": ["apps/eidiko-monorepo/src/assets"],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "generateLockfile": true,
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "eidiko-monorepo:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "eidiko-monorepo:build:development"
+        },
+        "production": {
+          "buildTarget": "eidiko-monorepo:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/eidiko-monorepo/jest.config.ts"
+      }
+    },
+    "docker-build": {
+      "dependsOn": ["build"],
+      "command": "docker build -f apps/eidiko-monorepo/Dockerfile . -t eidiko-monorepo"
+    }
+  },
+  "tags": []
+}

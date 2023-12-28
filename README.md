@@ -69,6 +69,23 @@ npm test
 
 
 
+#STEP-11: Install Nx
+
+npm install -g create-nx-workspace
+
+
+npm install --global yarn
+
+yarn global add create-nx-workspace
+
+yarn global add nx
+
+#STEP-12: Create an NX workspace
+
+
+create-nx-workspace my-monorepo
+
+
 #pnpm install
 
 #pnpm nx run workspace-next:lint --configuration=ci
