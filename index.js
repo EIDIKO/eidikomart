@@ -1,7 +1,6 @@
 // index.js
-const _ = require('lodash');
+function sum(a, b) {
+  return a + b;
+}
 
-const numbers = [1, 2, 3, 4, 5];
-const sum = _.sum(numbers);
-
-console.log(`Sum of numbers: ${sum}`);
+module.exports = sum;
