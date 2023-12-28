@@ -80,11 +80,42 @@ yarn global add create-nx-workspace
 
 yarn global add nx
 
+
+#STEP-11.1: code coverage
+
+pnpm install --save-dev jest ts-jest
+
+//in  jest.config.js add below
+module.exports = {
+  "preset": "ts-jest",
+  "testEnvironment": "node",
+  "coverageDirectory": "./coverage",
+  "collectCoverage": true,
+  "collectCoverageFrom": ["src/**/*.ts"],
+  "coverageReporters": ["lcov", "text", "text-summary"]
+}
+
+//in package.json add below
+"scripts": {
+  "test": "jest",
+  "test:coverage": "jest --coverage"
+}
+
+
+
+pnpm run test:coverage eidiko-monorepo-plans
+
+
+
 #STEP-12: Create an NX workspace
 
 
 create-nx-workspace my-monorepo
 
+#STEP-13: install @nrwl/cli as nx is not @nrwl/cli
+
+
+npm install -g @nrwl/cli
 
 #pnpm install
 
