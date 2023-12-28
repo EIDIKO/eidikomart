@@ -21,3 +21,5 @@ jobs:
           npm install @nx/eslint-plugin@latest --save-dev
       - name: Run Tests
         run: npm test
+      - name: Pnpm Run Tests
+        run: pnpm run test:coverage
