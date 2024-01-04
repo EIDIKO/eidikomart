@@ -8,25 +8,27 @@ module.exports  = {
   'collectCoverage': true,
   'collectCoverageFrom': ['src/**/*.ts'],
   'coverageReporters': ['lcov', 'text', 'text-summary'],
-  'coverageThreshold': {
-    'global': {
+  transform: {
+    '^.+\\.tsx?$': 'ts-jest',
+    '^.+\\.jsx?$': 'babel-jest',
+  },
+  
+};
+
+
+module.exports = {
+ 
+  moduleNameMapper: {
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+  },
+  coverageThreshold: {
+    global: {
       'branches': 80,
       'functions': 80,
       'lines': 80,
       'statements': 80
     }
   }
-};
-
-
-module.exports = {
-  transform: {
-    '^.+\\.tsx?$': 'ts-jest',
-    '^.+\\.jsx?$': 'babel-jest',
-  },
-  moduleNameMapper: {
-    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
-  },
 };
 
 
